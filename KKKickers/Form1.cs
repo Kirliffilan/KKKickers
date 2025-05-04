@@ -17,7 +17,7 @@ namespace KKKickers
         private readonly Image buttonImage;
         private Rectangle buttonRect;
 
-        private readonly List<Image> backgroundImages = new List<Image>();
+        private readonly List<Image> backgroundImages = [];
         private Image backgroundImage => backgroundImages[curImage];
         private int curImage = 0;
 
@@ -26,9 +26,9 @@ namespace KKKickers
         private readonly Font tipFont;
 
         private PrivateFontCollection pfc;
-        private System.Windows.Forms.Timer gameTimer;
-        private System.Windows.Forms.Timer bgTimer;
-        private System.Windows.Forms.Timer spikeTimer;
+        private readonly System.Windows.Forms.Timer gameTimer;
+        private readonly System.Windows.Forms.Timer bgTimer;
+        private readonly System.Windows.Forms.Timer spikeTimer;
 
         public Form1()
         {
@@ -219,6 +219,7 @@ namespace KKKickers
 
         private void Form1_SizeChanged(object sender, EventArgs e)
         {
+            if (gameManager == null) return;
             gameManager.FormRectangle = new RectangleF(0, 0, Width, Height);
             gameManager.InitializeBackground();
             InitializeButton();
