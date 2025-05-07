@@ -91,7 +91,7 @@ namespace KKKickers
 
         private void GenerateNextStructure()
         {
-            Random rnd = new Random();
+            Random rnd = new();
             int structureType = rnd.Next(1, 4);
             nextTip = Tips[structureType];
             baseY = CurrentWalls.Min(w => w.Bounds.Top);

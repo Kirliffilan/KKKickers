@@ -8,10 +8,5 @@ namespace KKKickers
 
         public SpikeWall(PointF position, Size size)
             : base(position, size) { }
-
-        public override void HandleCollision(Player player)
-        {
-            WallCollisionHelper.HandleWallCollision(player, Bounds);
-        }
     }
 }

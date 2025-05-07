@@ -1,4 +1,5 @@
 ﻿using System.Drawing;
+using System.Numerics;
 namespace KKKickers
 {
     public class Player
@@ -7,7 +8,7 @@ namespace KKKickers
         private const float _defaultGravity = 0.8f;
         private const float _defaultJumpForce = -16f;
         private const int _defaultMoveSpeed = 10;
-        private readonly PointF DefaultPosition = new PointF(420, 531);
+        private readonly PointF DefaultPosition = new(420, 531);
         private readonly float _startMoveBgY;
 
         private const float _deadGravity = 4f;
@@ -16,12 +17,12 @@ namespace KKKickers
         private readonly Image _slideSprite;
         private readonly Image _fallSprite;
         private readonly Image _jumpSprite;
-        public readonly Image _deadSprite;
+        private readonly Image _deadSprite;
         private readonly Image _deadSpriteUp;
 
         public PointF Position { get; set; }
-        public Image Sprite { get; set; }
-        public RectangleF Bounds => new RectangleF(Position, new Size(Sprite.Width * 2, Sprite.Height * 2));
+        public Image Sprite { get; private set; }
+        public RectangleF Bounds => new(Position, new Size(Sprite.Width * 2, Sprite.Height * 2));
         public bool IsFacingRight { get; set; } = true;
         public float VerticalVelocity { get; set; }
         public float Gravity { get; set; } = _defaultGravity;
@@ -97,6 +98,14 @@ namespace KKKickers
             VerticalVelocity = JumpForce;
             IsSliding = false;
             JumpsRemaining--;
+        }
+
+        public void BumpHead(RectangleF wallRect)
+        {
+            if (!IsLastSliding) Sprite = _deadSprite;
+            IsSliding = false;
+            Position = new PointF(Position.X, wallRect.Bottom + 15);
+            VerticalVelocity = 0;
         }
 
         public void RotateJump()

@@ -80,7 +80,6 @@ namespace KKKickers
             );
         }
 
-
         private void StartGame()
         {
             isMenu = false;

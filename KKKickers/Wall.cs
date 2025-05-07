@@ -12,7 +12,10 @@ namespace KKKickers
             if (IsActive && Sprite != null) g.DrawImage(Sprite, Bounds);
         }
 
-        public abstract void HandleCollision(Player player);
+        public virtual void HandleCollision(Player player)
+        {
+            WallCollisionHelper.HandleWallCollision(player, Bounds);
+        }
 
         public virtual void Update()
         {

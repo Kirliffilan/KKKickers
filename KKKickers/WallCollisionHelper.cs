@@ -8,11 +8,7 @@ namespace KKKickers
             var playerBounds = player.Bounds;
             if (playerBounds.Top > wallRect.Bottom - 10 && !isBounce)
             {
-                if (!player.IsLastSliding) player.Sprite = player._deadSprite;
-                player.IsSliding = false;
-                player.Position = new PointF(player.Position.X, wallRect.Bottom + 15);
-                player.VerticalVelocity = 0;
-
+                player.BumpHead(wallRect);
             }
             else
             {
