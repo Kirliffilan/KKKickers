@@ -100,6 +100,7 @@ namespace KKKickers
 
         protected override void OnPaint(PaintEventArgs e)
         {
+            if (gameManager == null) return;
             base.OnPaint(e);
             if (!isMenu)
             {
@@ -163,38 +164,43 @@ namespace KKKickers
                 pfc = new PrivateFontCollection();
                 var assembly = Assembly.GetExecutingAssembly();
                 var resourceName = "KKKickers.Resources.pixelFont.ttf";
-                using (var stream = assembly.GetManifestResourceStream(resourceName))
-                {
-                    if (stream == null) throw new FileNotFoundException(resourceName);
+                using var stream = assembly.GetManifestResourceStream(resourceName);
+                if (stream == null) return new Font("Verdana", size);
 
-                    byte[] fontData = new byte[stream.Length];
-                    stream.Read(fontData, 0, fontData.Length);
+                byte[] fontData = new byte[stream.Length];
+                stream.Read(fontData, 0, fontData.Length);
 
-                    IntPtr ptr = Marshal.AllocCoTaskMem(fontData.Length);
-                    Marshal.Copy(fontData, 0, ptr, fontData.Length);
-                    pfc.AddMemoryFont(ptr, fontData.Length);
-                    Marshal.FreeCoTaskMem(ptr);
-                }
+                IntPtr ptr = Marshal.AllocCoTaskMem(fontData.Length);
+                Marshal.Copy(fontData, 0, ptr, fontData.Length);
+                pfc.AddMemoryFont(ptr, fontData.Length);
+                Marshal.FreeCoTaskMem(ptr);
             }
-
+            if (pfc.Families.Length == 0) return new Font("Verdana", size);
             return new Font(pfc.Families[0], size);
         }
 
         private void GameTimer_Tick(object sender, EventArgs e)
         {
+            if (gameManager == null) return;
             gameManager.Update();
             if (gameManager.OutOfBounds) EndGame();
             Invalidate();
         }
 
-        private void SpikeTimer_Tick(object sender, EventArgs e) => gameManager.ToggleSpikes();
+        private void SpikeTimer_Tick(object sender, EventArgs e)
+        {
+            if (gameManager == null) return;
+            gameManager.ToggleSpikes();
+        }
         private void BGTimer_Tick(object sender, EventArgs e)
         {
+            if (gameManager == null) return;
             curImage += 1;
             if (curImage >= backgroundImages.Count) curImage = 0;
         }
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
+            if (gameManager == null) return;
             if (e.KeyCode == Keys.Space)
             {
                 if (isMenu) StartGame();
@@ -211,6 +217,7 @@ namespace KKKickers
 
         private void Form1_MouseUp(object sender, MouseEventArgs e)
         {
+            if (gameManager == null) return;
             if (buttonRect.Contains(e.Location))
                 if (isMenu) StartGame();
             else if (!isMenu) gameManager.Player.Jump();
@@ -227,11 +234,13 @@ namespace KKKickers
 
         private void Form1_KeyUp(object sender, KeyEventArgs e)
         {
+            if (gameManager == null) return;
             if (e.KeyCode == Keys.Space) gameManager.Player.LetJump = true;
         }
 
         private void Form1_FormClosed(object sender, FormClosedEventArgs e)
         {
+            if (gameManager == null) return;
             Properties.Settings.Default.HighScore = gameManager.HighScore;
             Properties.Settings.Default.Save();
         }

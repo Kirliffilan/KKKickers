@@ -34,8 +34,8 @@ namespace KKKickers
 
         public GameManager(Image bG, RectangleF formRectangle)
         {
-            CurrentWalls = new List<Wall>();
-            NextWalls = new List<Wall>();
+            CurrentWalls = [];
+            NextWalls = [];
             FormRectangle = formRectangle;
             startMoveBgY = 300;
             Player = new Player(startMoveBgY);
@@ -46,10 +46,10 @@ namespace KKKickers
         {
             bgBounds[0] = new RectangleF(200, 0, BG.Width * 2, BG.Height * 2);
             bgBounds[1] = new RectangleF(200, -FormRectangle.Height, BG.Width * 2, BG.Height * 2);
-            bgBounds[1] = new RectangleF(FormRectangle.Width / 2, 200, BG.Width * 2, BG.Height * 2);
-            bgBounds[1] = new RectangleF(FormRectangle.Width / 2, 200 - FormRectangle.Height, BG.Width * 2, BG.Height * 2);
-            bgBounds[2] = new RectangleF(FormRectangle.Width - 200, 400, -BG.Width * 2, BG.Height * 2);
-            bgBounds[3] = new RectangleF(FormRectangle.Width - 200, 400 - FormRectangle.Height, -BG.Width * 2, BG.Height * 2);
+            bgBounds[2] = new RectangleF(FormRectangle.Width / 2, 200, BG.Width * 2, BG.Height * 2);
+            bgBounds[3] = new RectangleF(FormRectangle.Width / 2, 200 - FormRectangle.Height, BG.Width * 2, BG.Height * 2);
+            bgBounds[4] = new RectangleF(FormRectangle.Width - 200, 400, -BG.Width * 2, BG.Height * 2);
+            bgBounds[5] = new RectangleF(FormRectangle.Width - 200, 400 - FormRectangle.Height, -BG.Width * 2, BG.Height * 2);
         }
         public void Reset()
         {
@@ -212,6 +212,8 @@ namespace KKKickers
 
         public void Update()
         {
+            if (Player == null || CurrentWalls == null || NextWalls == null) return;
+
             Player.ApplyGravity();
             CheckOutOfBounds();
             UpdateSaws();
