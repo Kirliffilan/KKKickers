@@ -1,4 +1,5 @@
 ﻿using System.Drawing;
+using KKKickers.GameObjects.Walls;
 namespace KKKickers
 {
     public class WinWall : Wall

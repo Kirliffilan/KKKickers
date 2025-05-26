@@ -1,7 +1,7 @@
 ﻿using System.Drawing;
 using System.Numerics;
 
-namespace KKKickers
+namespace KKKickers.GameObjects.Walls
 {
     public class BrokenWall : Wall
     {
