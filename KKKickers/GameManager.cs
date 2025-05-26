@@ -24,7 +24,7 @@ namespace KKKickers
         public RectangleF[] bgBounds = new RectangleF[6];
         public int HighScore { get; private set; } = Properties.Settings.Default.HighScore;
         public int Score { get; private set; }
-        public bool IsSpikesActive { get; set; }
+        public bool _isSpikesActive { get; set; }
         public bool OutOfBounds { get; set; } = false;
         public RectangleF FormRectangle { get; set; }
         private readonly Size wallSize = new(20, 128);
@@ -56,7 +56,7 @@ namespace KKKickers
             HighScore = Score > HighScore ? Score : HighScore;
             Score = 0;
             currentTip = Tips[0];
-            IsSpikesActive = false;
+            _isSpikesActive = false;
             OutOfBounds = false;
             Player.Reset();
             CurrentWalls.Clear();
@@ -307,9 +307,9 @@ namespace KKKickers
 
         public void ToggleSpikes()
         {
-            IsSpikesActive = !IsSpikesActive;
+            _isSpikesActive = !_isSpikesActive;
 
-            if (IsSpikesActive) AddSpikes();
+            if (_isSpikesActive) AddSpikes();
             else RemoveSpikes();
         }
 
