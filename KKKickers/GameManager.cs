@@ -24,13 +24,13 @@ namespace KKKickers
         public RectangleF[] bgBounds = new RectangleF[6];
         public int HighScore { get; private set; } = Properties.Settings.Default.HighScore;
         public int Score { get; private set; }
-        public bool _isSpikesActive { get; set; }
         public bool OutOfBounds { get; set; } = false;
         public RectangleF FormRectangle { get; set; }
         private readonly Size wallSize = new(20, 128);
         private readonly Size sawSize = new(32, 32);
         private readonly float startMoveBgY;
         private float baseY;
+        private bool _isSpikesActive = false;
 
         public GameManager(Image bG, RectangleF formRectangle)
         {
