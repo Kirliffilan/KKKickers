@@ -333,6 +333,6 @@ namespace KKKickers
             CurrentWalls.AddRange(spikesToAdd);
         }
 
-        private void RemoveSpikes() => CurrentWalls.RemoveAll(w => w is Spikes normalWall);
+        private void RemoveSpikes() => CurrentWalls.RemoveAll(w => w is Spikes);
     }
 }

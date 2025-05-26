@@ -16,7 +16,7 @@ namespace KKKickers
         private bool _movingForward = true;
         private const int _pauseFrames = 20;
         private int _pauseCounter = 0;
-        private readonly bool isStacionary;
+        private readonly bool _isStacionary;
 
         private float _rotationProgress = 0f;
         private const float _rotationSpeed = 0.04f;
@@ -25,7 +25,7 @@ namespace KKKickers
         public CircularSaw(PointF position, Size size, float moveX = 0, float moveY = 0)
             : base(position, size)
         {
-            isStacionary = moveX == 0 && moveY == 0;
+            _isStacionary = moveX == 0 && moveY == 0;
             startPosition = position;
             _moveDistanceX = moveX;
             _moveDistanceY = moveY;
@@ -65,7 +65,7 @@ namespace KKKickers
 
         private void UpdateRotation()
         {
-            if (isStacionary)
+            if (_isStacionary)
             {
                 _rotationProgress += _rotationSpeed;
                 _rotationProgress %= 1f;
@@ -84,7 +84,7 @@ namespace KKKickers
         {
             float halfWidth = Bounds.Width / 2;
             float halfHeight = Bounds.Height / 2;
-            float currentRotation = isStacionary ?
+            float currentRotation = _isStacionary ?
                 360f * _rotationProgress :
                 360f * EaseInOutQuad(_rotationProgress);
 
