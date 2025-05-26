@@ -1,5 +1,5 @@
 ﻿using System.Drawing;
-namespace KKKickers
+namespace KKKickers.GameObjects.Walls
 {
     public class SpikeWall : Wall
     {

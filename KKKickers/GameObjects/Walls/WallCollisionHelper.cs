@@ -1,5 +1,5 @@
 ﻿using System.Drawing;
-namespace KKKickers
+namespace KKKickers.GameObjects.Walls
 {
     public static class WallCollisionHelper
     {
@@ -35,13 +35,14 @@ namespace KKKickers
                         player.Position = new PointF(player.Position.X, wallRect.Bottom + 5);
                     }
                 }
-                else if (minOverlap == overlapTop) { 
+                else if (minOverlap == overlapTop)
+                {
                     if (isBounce)
                     {
                         player.Jump();
                         return;
                     }
-                    SlideThroughWall(player, wallRect); 
+                    SlideThroughWall(player, wallRect);
                 }
                 else if (minOverlap == overlapRight)
                 {

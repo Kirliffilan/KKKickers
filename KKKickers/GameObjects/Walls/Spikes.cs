@@ -1,5 +1,5 @@
 ﻿using System;
-namespace KKKickers
+namespace KKKickers.GameObjects.Walls
 {
     public class Spikes : Wall
     {

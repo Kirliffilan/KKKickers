@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Numerics;
+using KKKickers.GameObjects;
+using KKKickers.GameObjects.Walls;
 
 namespace KKKickers
 {
@@ -254,6 +256,7 @@ namespace KKKickers
         {
             if (!Player.Bounds.IntersectsWith(FormRectangle)) OutOfBounds = true;
         }
+
         private void UpdateSaws()
         {
             foreach (var saw in CurrentWalls.OfType<CircularSaw>().Concat(NextWalls.OfType<CircularSaw>()))

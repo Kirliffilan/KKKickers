@@ -50,15 +50,15 @@ namespace KKKickers
 
             gameManager = new GameManager(Properties.Resources.BG1, new RectangleF(0, 0, Width, Height));
 
-            gameTimer = new System.Windows.Forms.Timer();
+            gameTimer = new();
             gameTimer.Interval = 30;
             gameTimer.Tick += GameTimer_Tick;
 
-            bgTimer = new System.Windows.Forms.Timer();
+            bgTimer = new();
             bgTimer.Interval = 300;
             bgTimer.Tick += BGTimer_Tick;
 
-            spikeTimer = new System.Windows.Forms.Timer();
+            spikeTimer = new();
             spikeTimer.Interval = 3000;
             spikeTimer.Tick += SpikeTimer_Tick;
 
