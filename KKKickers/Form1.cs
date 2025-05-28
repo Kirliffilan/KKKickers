@@ -218,11 +218,19 @@ namespace KKKickers
         private void Form1_MouseUp(object sender, MouseEventArgs e)
         {
             if (gameManager == null) return;
+            gameManager.Player.LetJump = true;
             if (buttonRect.Contains(e.Location))
                 if (isMenu) StartGame();
-            else if (!isMenu) gameManager.Player.Jump();
         }
-
+        private void Form1_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (gameManager == null) return;
+            if (gameManager.Player.LetJump)
+            {
+                gameManager.Player.Jump();
+                gameManager.Player.LetJump = false;
+            }
+        }
         private void Form1_SizeChanged(object sender, EventArgs e)
         {
             if (gameManager == null) return;
@@ -244,5 +252,7 @@ namespace KKKickers
             Properties.Settings.Default.HighScore = gameManager.HighScore;
             Properties.Settings.Default.Save();
         }
+
+        
     }
 }
