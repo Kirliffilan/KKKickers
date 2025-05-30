@@ -39,7 +39,6 @@
             MinimumSize = new Size(1280, 720);
             Name = "Form1";
             Text = "KKKickers";
-            FormClosed += Form1_FormClosed;
             SizeChanged += Form1_SizeChanged;
             KeyDown += Form1_KeyDown;
             KeyUp += Form1_KeyUp;

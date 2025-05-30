@@ -4,6 +4,24 @@ namespace KKKickers.GameObjects
 {
     public class Player
     {
+        public static void Initialize(float startmoveBgY)
+        {
+            if (_instance != null)
+                throw new InvalidOperationException("Player already initialized.");
+            _instance = new(startmoveBgY);
+        }
+
+        private static Player _instance;
+        public static Player Instance
+        {
+            get
+            {
+                if (_instance == null)
+                    throw new InvalidOperationException("Player not initialized. Call Initialize() first.");
+                return _instance;
+            }
+        }
+
         private const int _maxJumps = 2;
         private const float _defaultGravity = 0.8f;
         private const float _defaultJumpForce = -16f;
@@ -20,6 +38,7 @@ namespace KKKickers.GameObjects
         private readonly Image _deadSprite;
         private readonly Image _deadSpriteUp;
 
+        public float StartMoveBgY => _startMoveBgY;
         public PointF Position { get; set; }
         public Image Sprite { get; private set; }
         public RectangleF Bounds => new(Position, new Size(Sprite.Width * 2, Sprite.Height * 2));
@@ -37,7 +56,7 @@ namespace KKKickers.GameObjects
         public bool IsMoving { get; set; }
         public bool IsSliding { get; set; }
         public bool IsLastSliding = false;
-        public Player(float startMoveBgY)
+        private Player(float startMoveBgY)
         {
             _slideSprite = Properties.Resources.Player;
             _fallSprite = Properties.Resources.PlayerFall;
