@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using KKKickers.GameObjects;
+﻿using KKKickers.GameObjects;
 using KKKickers.GameObjects.Walls;
 
 namespace KKKickers.GameLogic

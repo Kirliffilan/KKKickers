@@ -1,6 +1,4 @@
-﻿using System.Drawing;
-using System.Numerics;
-namespace KKKickers.GameObjects
+﻿namespace KKKickers.GameObjects
 {
     public class Player
     {

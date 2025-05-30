@@ -1,7 +1,4 @@
-﻿using System.Drawing;
-using System.Numerics;
-
-namespace KKKickers.GameObjects.Walls
+﻿namespace KKKickers.GameObjects.Walls
 {
     public class BounceWall : Wall
     {

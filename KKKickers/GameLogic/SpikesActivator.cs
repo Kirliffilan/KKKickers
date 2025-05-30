@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using KKKickers.GameObjects.Walls;
-
-namespace KKKickers.GameLogic
+﻿namespace KKKickers.GameLogic
 {
     public class SpikesActivator
     {

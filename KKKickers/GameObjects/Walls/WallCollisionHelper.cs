@@ -1,5 +1,4 @@
-﻿using System.Drawing;
-namespace KKKickers.GameObjects.Walls
+﻿namespace KKKickers.GameObjects.Walls
 {
     public static class WallCollisionHelper
     {
