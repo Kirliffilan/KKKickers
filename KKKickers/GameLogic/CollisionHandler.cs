@@ -32,7 +32,7 @@ namespace KKKickers.GameLogic
             _formRectangle = formRectangle;
         }
 
-        public void GetFormRectangle(RectangleF formRectangle) => _formRectangle = formRectangle;
+        public void SetFormRectangle(RectangleF formRectangle) => _formRectangle = formRectangle;
 
         public void Reset() => _outOfBounds = false;
         public void CheckOutOfBounds()
@@ -55,7 +55,7 @@ namespace KKKickers.GameLogic
                     if (wall is WinWall winWall && !winWall.IsTriggered)
                     {
                         ScoreHandler.Instance.AddScore();
-                        UIHandler.Instance.SwapTips();
+                        UIHandler.Instance.UpdateTip();
                         winWall.IsTriggered = true;
                     }
                 }

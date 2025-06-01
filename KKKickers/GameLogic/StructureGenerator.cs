@@ -40,7 +40,7 @@ namespace KKKickers.GameLogic
 
         private StructureGenerator(float formHeight) => _formHeight = formHeight;
 
-        public void GetFormHeight(float formHeight) => _formHeight = formHeight;
+        public void SetFormHeight(float formHeight) => _formHeight = formHeight;
 
         public void Reset()
         {

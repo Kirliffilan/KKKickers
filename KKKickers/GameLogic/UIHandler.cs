@@ -35,6 +35,6 @@
         public void Reset() => _currentTip = Tips[0];
         public void ShowHighScoreTip() => _currentTip = _highscoreTip;
         public void ChooseNextTip(int i) => _nextTip = Tips[i];
-        public void SwapTips() => _currentTip = _nextTip;
+        public void UpdateTip() => _currentTip = _nextTip;
     }
 }

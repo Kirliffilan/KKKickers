@@ -280,9 +280,9 @@ namespace KKKickers
         {
             if (_backgroundUpdator == null || _collisionHandler == null || _structureGenerator == null) return;
 
-            _backgroundUpdator.GetFormRectangle(new RectangleF(0, 0, Width, Height));
-            _collisionHandler.GetFormRectangle(new RectangleF(0, 0, Width, Height));
-            _structureGenerator.GetFormHeight(Height);
+            _backgroundUpdator.SetFormRectangle(new RectangleF(0, 0, Width, Height));
+            _collisionHandler.SetFormRectangle(new RectangleF(0, 0, Width, Height));
+            _structureGenerator.SetFormHeight(Height);
 
             InitializeButton();
             Invalidate();

@@ -31,7 +31,7 @@ namespace KKKickers.GameLogic
             _formRectangle = formRectangle;
         }
 
-        public void GetFormRectangle(RectangleF formRectangle) => _formRectangle = formRectangle;
+        public void SetFormRectangle(RectangleF formRectangle) => _formRectangle = formRectangle;
 
         public void InitializeBackground()
         {
