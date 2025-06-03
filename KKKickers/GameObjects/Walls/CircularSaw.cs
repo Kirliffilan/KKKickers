@@ -92,7 +92,7 @@
             g.Restore(state);
         }
 
-        private static float EaseInOutQuad(float t) => t < 0.5f ? 2f * t * t : 1f - (float)Math.Pow(-2f * t + 2f, 2) / 2f;
+        private static float EaseInOutQuad(float t) => t < 0.5f ? 2f * t * t : 1f - (-2f * t + 2f) * (-2f * t + 2f) / 2f;
 
         public override void HandleCollision(Player player) => player.Die();
     }
